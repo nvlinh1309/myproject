@@ -19,12 +19,25 @@ Route::get('admin/{i}/{j}',function($i,$j){
 
 Route::get('admin',function(){
 		return 'Admin';
-});
+})->name('admin'); // định danh route
+
+// chuyển hướng route cách 1
+/*Route::get('user', function(){
+	return redirect()->route('admin');
+});*/ 
+
+// chuyển hướng route cách 2
+Route::get('user', function(){
+	return redirect('admin');
+}); 
 
 //group
 Route::group(['prefix'=>'admin'],function(){
 	Route::get('home',function(){
 		return 'Home';
+	}); 
+	Route::get('product',function(){
+		return 'Product';
 	}); 
 });
 
@@ -41,3 +54,10 @@ Route::get('/', function () {
 Route::get('view', 'MyController@getView');
 
 Route::get('blade', 'MyController@getPost');
+
+Route::get('laravel', 'MyController@getLaravel');
+Route::post('laravel', 'MyController@postLaravel');
+
+
+
+
