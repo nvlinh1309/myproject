@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('test');
-});
+
 
 Route::get('admin/{i}/{j}',function($i,$j){
 		return $tong=$i+$j;;
@@ -27,5 +25,17 @@ Route::get('admin',function(){
 Route::group(['prefix'=>'admin'],function(){
 	Route::get('home',function(){
 		return 'Home';
-	});
+	}); 
 });
+
+//controller
+
+Route::get('controller/{i}/{j}', 'MyController@getController');
+
+//view
+
+Route::get('/', function () {
+    return view('test');
+});
+
+Route::get('view', 'MyController@getView');
