@@ -39,3 +39,5 @@ Route::get('/', function () {
 });
 
 Route::get('view', 'MyController@getView');
+
+Route::get('blade', 'MyController@getPost');

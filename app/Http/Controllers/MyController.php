@@ -17,4 +17,8 @@ class MyController extends Controller
     	//return view('MyView',$data);
     	return view('MyView',$data1);
     }
+
+    public function getPost(){
+    	return view('TestBlade');
+    }
 }

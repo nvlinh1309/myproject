@@ -4,12 +4,27 @@
 		{{$value}}.<br>	
 	@endforeach
  --}}
-@if($number>0)
+
+
+{{--@if($number>0)
 	<p>Số dương</p>
 @elseif($number<0)
 	<p>Số âm</p>
 @else
 	<p>Số 0</p>
-@endif
+@endif--}}
 
+
+@for($i=0;$i<=10;$i++)
+	{{$i}}<br>
+@endfor
+
+
+
+@while($number<=10)
+	{{$number}}<br>
+	@php
+		$number++;
+	@endphp
+@endwhile
 
