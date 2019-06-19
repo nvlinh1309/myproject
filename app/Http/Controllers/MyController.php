@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-
+use App\Http\Requests\myRequest;
 use Illuminate\Http\Request;
 
 class MyController extends Controller
@@ -23,23 +23,46 @@ class MyController extends Controller
     	return view('TestBlade');
     }
 
-    public function getLaravel(){
-        if(isset($_SESSION['user'])){
-            return view('home');
+    
+
+    public function postLaravel(myRequest $request){
+        $mail=$_POST['mail'];
+        $pwd=$_POST['pwd'];
+        if($mail=='laravel@gmail.com' && $pwd=='1234'){
+            session()->put('mail',$mail);
+            return redirect('home');
+        }else{
+           // $errors = new MessageBag(['errorlogin' => 'Email hoặc mật khẩu không đúng']);
+    		//return redirect()->back()->withInput()->withErrors($errors);
+        }
+         
+    }
+
+
+    public function Logout(){
+        session()->forget('mail');
+        // delete all sesion
+        // session()->flush();
+        echo '<META http-equiv="refresh" content="0;URL=./">';
+        
+    }
+    public function Login(){
+
+        if(session()->has('mail')){
+            return redirect('home');
         }else{
             return view('login');
         }
         
     }
-    public function postLaravel(Request $request){
-         $request->validate([
-             'mail'=> 'required|email',
-             'pwd'=> 'required'
-         ],[
-             'mail.required'=>'Username must not null',
-             'mail.email'=>'Email invalidate',
-             'pwd.required'=>'Password must not null'
-         ]);
+
+    public function Home(){
+
+        if(session()->has('mail')){
+            return view('home');
+        }else{
+            return redirect('login');
+        }
         
     }
 }

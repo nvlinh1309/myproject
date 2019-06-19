@@ -1,7 +1,10 @@
 @extends('master.master')
 @section('content')
+
+
+
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="#">Laravel</a>
+  <a class="navbar-brand" href="#">{{session('mail')}}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -15,7 +18,10 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">About</a>
-      </li>    
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="./logout">Logout</a>
+      </li>   
     </ul>
   </div>  
 </nav>
@@ -24,7 +30,7 @@
   <div class="row">
     <div class="col-sm-4">
       <h2>About Me</h2>
-      <h5>Photo of me:</h5>
+      <h5> of mePhoto:</h5>
       <div class="fakeimg">Fake Image</div>
       <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
       <h3>Some Links</h3>

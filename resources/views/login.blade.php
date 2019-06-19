@@ -13,19 +13,22 @@
                 </div>
                 <div class="form-group">
                     <label for="uname">Email:</label>
-                    <input type="text" class="form-control" name="mail" placeholder="Enter your email">
+                    <input type="text" class="form-control" value="{{ old('mail') }}" name="mail" placeholder="Enter your email">
                     @if($errors->has('mail'))
-                        <div class="invalid-feedback">{{$errors->first('mail')}}</div>
+                        <div style="color:red"><i>{{$errors->first('mail')}}</i></div>
                     @endif
                 </div>
                 <div class="form-group">
                     <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" name="pwd" placeholder="Enter password">
+                    <input type="password" class="form-control" value="{{ old('pwd') }}" name="pwd" placeholder="Enter password">
                     @if($errors->has('pwd'))
-                        <div class="invalid-feedback">{{$errors->first('pwd')}}</div>
+                        <div style="color:red"><i>{{$errors->first('pwd')}}</i></div>
                     @endif
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                @if($errors->has('errorlogin'))
+                        <div style="color:red"><i>{{$errors->first('errorlogin')}}</i></div>
+                @endif
             </form>
 
 </div>
